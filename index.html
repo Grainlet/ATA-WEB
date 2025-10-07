@@ -1,0 +1,309 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Adwaith Thought Academy - Gokul</title>
+
+  <!-- Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&family=Poppins:wght@600;700;800&display=swap" rel="stylesheet">
+
+  <!-- Theme colours: #2b3f74 (blue), #f57722 (orange), #ffffff (white) -->
+  <style>
+    :root{
+      --blue: #2b3f74;
+      --orange: #f57722;
+      --white: #ffffff;
+      --max-width: 1400px;
+      --easing: cubic-bezier(.2,.9,.3,1);
+    }
+    .logo-img { height: 50px; width: auto; object-fit: contain; border-radius: 8px; }
+
+    *{box-sizing:border-box;}
+    html,body{height:100%;}
+    body{
+      margin:0;
+      font-family:Inter, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+      color:var(--white);
+      background:var(--white);
+      -webkit-font-smoothing:antialiased;
+      -moz-osx-font-smoothing:grayscale;
+    }
+    a{color:inherit;text-decoration:none}
+
+    #prog{position:fixed;left:0;top:0;height:4px;background:var(--orange);width:0;z-index:9999}
+    .cursor{position:fixed;z-index:99999;pointer-events:none;width:10px;height:10px;border-radius:50%;transform:translate(-50%,-50%);background:var(--orange);mix-blend-mode:normal}
+
+    header{
+      position:fixed;left:0;right:0;top:0;z-index:1000;backdrop-filter:blur(4px);
+      background:linear-gradient(180deg, rgba(43,63,116,0.22), rgba(43,63,116,0.06));
+      border-bottom:1px solid rgba(255,255,255,0.03);
+      transition: background 0.5s var(--easing);
+    }
+    header.scrolled{ background: rgba(43,63,116,0.85); }
+    .nav-wrap{max-width:var(--max-width);margin:0 auto;display:flex;align-items:center;justify-content:space-between;padding:18px}
+    .brand{display:flex;align-items:center;gap:14px}
+    .brand .logo{width:48px;height:48px;border-radius:10px;background:linear-gradient(135deg,var(--blue),#1f2d51);display:flex;align-items:center;justify-content:center;font-weight:800;color:var(--white);font-family:Poppins}
+    nav ul{display:flex;gap:20px;align-items:center;list-style:none;margin:0;padding:0}
+    nav li{font-weight:600;font-size:15px;color:var(--white);opacity:0.95}
+    nav li a{padding:8px 10px;border-radius:8px}
+    nav li a:hover{background:rgba(245,119,34,0.08);box-shadow:0 6px 18px rgba(43,63,116,0.12)}
+    .cta{background:var(--orange);color:var(--white);padding:10px 16px;border-radius:10px;font-weight:700}
+
+    .hero{min-height:92vh;display:flex;align-items:center;padding:120px 24px 60px;background:linear-gradient(180deg,var(--blue),#24355c);}
+    .container{max-width:var(--max-width);margin:0 auto;width:100%}
+    .hero-grid{display:grid;grid-template-columns:1fr 520px;gap:40px;align-items:center}
+    .hero h1{font-family:Poppins;font-weight:800;font-size:56px;line-height:1.02;margin:0;color:var(--white);letter-spacing:-0.02em}
+    .hero p{margin-top:14px;font-size:18px;color:rgba(255,255,255,0.92);max-width:60%}
+    .hero .actions{margin-top:22px;display:flex;gap:14px}
+    .btn{display:inline-flex;align-items:center;gap:10px;padding:12px 18px;border-radius:10px;font-weight:700}
+    .btn.secondary{border:2px solid rgba(255,255,255,0.08);background:transparent;color:var(--white)}
+    .hero-card{background:linear-gradient(180deg, rgba(255,255,255,0.04), rgba(255,255,255,0.02));padding:18px;border-radius:14px;box-shadow:0 10px 40px rgba(11,23,55,0.4);}
+    .hero-card img{width:100%;height:320px;object-fit:cover;border-radius:10px}
+
+    section{padding:72px 24px}
+    .section-head{display:flex;align-items:center;justify-content:space-between;gap:20px;margin-bottom:22px}
+    .section-title{font-family:Poppins;font-size:28px;color:var(--blue);}
+    .section-sub{color:rgba(0,0,0,0.55);font-weight:600}
+
+    .card-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:20px}
+    .glow{box-shadow:0 8px 30px rgba(37,55,98,0.28);border:1px solid rgba(255,255,255,0.03)}
+  </style>
+</head>
+<body>
+  <div id="prog"></div>
+  <div class="cursor" id="cursor"></div>
+
+  <!-- Navbar -->
+  <header>
+    <div class="nav-wrap container">
+      <div class="brand">
+        <div class="logo">
+          <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTqJ37y_VZKQynOIsvZjyqBdRqSqOWPfUclLg&s" alt="Logo" class="logo-img">
+        </div>
+        <div>
+          <div style="font-weight:800;font-family:Poppins;color:var(--white);font-size:18px">Adwaith Thought Academy</div>
+          <div style="font-size:12px;color:rgba(255,255,255,0.78);margin-top:2px">Think • Act • Impact</div>
+        </div>
+      </div>
+
+      <nav>
+        <ul>
+          <li><a href="#gallery">Gallery</a></li>
+          <li><a href="#infrastructure">Infrastructure</a></li>
+          <li><a href="#faculties">Our Faculties</a></li>
+          <li><a href="#celebrations">Celebrations</a></li>
+          <li><a href="#labs">Labs & Classrooms</a></li>
+          <li><a href="#sports">Sports</a></li>
+          <li><a href="#feedback" class="cta">Feedback</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <!-- HERO -->
+  <main>
+    <section class="hero">
+      <div class="container hero-grid">
+        <div>
+          <h1>Welcome to <span style="color:var(--orange)">Adwaith Thought Academy</span><br><small style="font-size:18px;font-weight:600;color:rgba(255,255,255,0.92)">Where innovation meets excellence</small></h1>
+          <p>At ATA our approach to education is perfectly aligned to this philosophy. We believe fostering original thought is as fundamental to a child’s intellectual growth as nutrition is to his physical wellbeing.</p>
+          <div class="actions">
+            <a class="btn cta" href="#gallery">Explore Gallery</a>
+            <a class="btn secondary" href="#infrastructure">Our Infrastructure</a>
+          </div>
+        </div>
+
+        <div class="hero-card glow">
+          <img src="https://www.adwaithacademy.edu.in/images/adwaith-enterance.webp" alt="Hero — school building">
+        </div>
+      </div>
+    </section>
+
+  <!-- Infrastructure -->
+  <section id="infrastructure">
+    <div class="container">
+      <div class="section-head">
+        <div>
+          <div class="section-title">Infrastructure</div>
+          <div class="section-sub">Thoughtfully designed spaces to inspire learning</div>
+        </div>
+      </div>
+
+      <div style="display:flex;gap:28px;flex-wrap:wrap;justify-content:center;align-items:center">
+        <div style="flex:1;min-width:300px;">
+          <img id="infra-img" src="https://nithyaprakash1.github.io/ATA.github.io/asset/infra/Infra9.png" style="width:100%;height:500px;object-fit:cover;border-radius:12px;">
+        </div>
+        <div style="flex:1;min-width:300px;color:var(--blue);background:var(--white);padding:22px;border-radius:12px">
+          <h3 style="margin-top:0;color:var(--blue)">Modern Campus Facilities</h3>
+          <ul style="color:rgba(0,0,0,0.7);font-weight:600">
+            <li>State-of-the-art auditorium</li>
+            <li>Comprehensive library & resource center</li>
+            <li>Dedicated arts & STEM wings</li>
+            <li>Secure campus with smart access</li>
+          </ul>
+          <div style="margin-top:18px;font-weight:700;color:var(--blue)">Designed for safety, accessibility, and performance.</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+<script>
+  // Infrastructure slideshow
+  const images = [
+    "https://nithyaprakash1.github.io/ATA.github.io/asset/infra/Infra4.png",
+    "https://nithyaprakash1.github.io/ATA.github.io/asset/infra/Infra6.png",
+    "https://nithyaprakash1.github.io/ATA.github.io/asset/infra/infra17.png",
+    "https://nithyaprakash1.github.io/ATA.github.io/asset/infra/infra13.png"
+  ];
+  let index = 0;
+  const imgElement = document.getElementById("infra-img");
+  setInterval(()=>{ index=(index+1)%images.length; imgElement.src=images[index]; },3000);
+</script>
+
+<!-- Faculties -->
+<section id="faculties">
+  <div class="container">
+    <div class="section-head">
+      <div>
+        <div class="section-title">Our Faculties</div>
+        <div class="section-sub">Experienced educators shaping young minds</div>
+      </div>
+    </div>
+
+    <div style="display:flex;gap:28px;flex-wrap:wrap;justify-content:center;align-items:center">
+      <div style="flex:1;min-width:300px;">
+        <img id="faculty-img" src="" style="width:100%;height:500px;object-fit:cover;border-radius:12px;border:4px solid #ff9900;">
+      </div>
+      <div style="flex:1;min-width:300px;color:var(--blue);background:var(--white);padding:22px;border-radius:12px">
+        <h3 style="margin-top:0;color:var(--blue)">Guiding Minds, Shaping Futures</h3>
+        <ul style="color:rgba(0,0,0,0.7);font-weight:600">
+          <li>Passionate about nurturing young minds and fostering creativity.</li>
+          <li>Experienced educators with years of teaching excellence.</li>
+          <li>Specialized in modern teaching methods and innovative learning.</li>
+          <li>Committed to building curiosity, confidence, and critical thinking.</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<script>
+  const facultyImages = [
+    "https://nithyaprakash1.github.io/ATA.github.io/asset/Faculties/f13.png",
+    "https://nithyaprakash1.github.io/ATA.github.io/asset/Faculties/f1.png",
+    "https://nithyaprakash1.github.io/ATA.github.io/asset/Faculties/f7.png",
+    "https://nithyaprakash1.github.io/ATA.github.io/asset/Faculties/f12.png"
+  ];
+  let currentFaculty = 0;
+  const facultyImgEl = document.getElementById("faculty-img");
+  function showNextFaculty(){facultyImgEl.src=facultyImages[currentFaculty];currentFaculty=(currentFaculty+1)%facultyImages.length;}
+  showNextFaculty();
+  setInterval(showNextFaculty,3000);
+</script>
+
+<!-- Celebrations Placeholder -->
+<section id="celebrations">
+  <div class="container">
+    <div class="section-head">
+      <div>
+        <div class="section-title">Celebrations</div>
+        <div class="section-sub">Festivals, annual day, and campus events</div>
+      </div>
+    </div>
+
+    <div style="display:flex;gap:28px;flex-wrap:wrap;justify-content:center;align-items:center">
+      <div style="flex:1;min-width:300px;">
+        <img src="https://via.placeholder.com/500x500" alt="Celebration Image" style="width:100%;height:500px;object-fit:cover;border-radius:12px;">
+      </div>
+      <div style="flex:1;min-width:300px;color:var(--blue);background:var(--white);padding:22px;border-radius:12px">
+        <h3 style="margin-top:0;color:var(--blue)">Joyful Campus Celebrations</h3>
+        <ul style="color:rgba(0,0,0,0.7);font-weight:600">
+          <li>Festivals and cultural events.</li>
+          <li>Annual day celebrations with performances.</li>
+          <li>Competitions and award ceremonies.</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Labs Placeholder -->
+<section id="labs">
+  <div class="container">
+    <div class="section-head">
+      <div>
+        <div class="section-title">Labs & Classrooms</div>
+        <div class="section-sub">Spaces engineered for hands-on learning</div>
+      </div>
+    </div>
+
+    <div style="display:flex;gap:28px;flex-wrap:wrap;justify-content:center;align-items:center">
+      <div style="flex:1;min-width:300px;">
+        <img src="https://via.placeholder.com/500x500" alt="Labs Image" style="width:100%;height:500px;object-fit:cover;border-radius:12px;">
+      </div>
+      <div style="flex:1;min-width:300px;color:var(--blue);background:var(--white);padding:22px;border-radius:12px">
+        <h3 style="margin-top:0;color:var(--blue)">Innovative Learning Spaces</h3>
+        <ul style="color:rgba(0,0,0,0.7);font-weight:600">
+          <li>Computer labs with coding and robotics workstations.</li>
+          <li>Science labs with safety-first setups.</li>
+          <li>Art & design studios for creativity.</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Sports Placeholder -->
+<section id="sports">
+  <div class="container">
+    <div class="section-head">
+      <div>
+        <div class="section-title">Sports & Extra Curricular</div>
+        <div class="section-sub">Holistic growth through physical activity and clubs</div>
+      </div>
+    </div>
+
+    <div style="display:flex;gap:28px;flex-wrap:wrap;justify-content:center;align-items:center">
+      <div style="flex:1;min-width:300px;">
+        <img src="https://via.placeholder.com/500x500" alt="Sports Image" style="width:100%;height:500px;object-fit:cover;border-radius:12px;">
+      </div>
+      <div style="flex:1;min-width:300px;color:var(--blue);background:var(--white);padding:22px;border-radius:12px">
+        <h3 style="margin-top:0;color:var(--blue)">Building Team Spirit & Excellence</h3>
+        <ul style="color:rgba(0,0,0,0.7);font-weight:600">
+          <li>Football and basketball coaching.</li>
+          <li>Music & arts clubs for performance.</li>
+          <li>Robotics & STEM clubs for competitions.</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Feedback -->
+<section id="feedback">
+  <div class="container">
+    <div class="section-head">
+      <div>
+        <div class="section-title">Feedback</div>
+        <div class="section-sub">We value your thoughts — leave us a message</div>
+      </div>
+    </div>
+    <div style="color:var(--blue);background:var(--white);padding:22px;border-radius:12px">
+      <form id="feedbackForm">
+        <input type="text" id="name" placeholder="Your name" required style="width:100%;padding:12px;margin-bottom:10px;border-radius:8px;border:1px solid #ccc;">
+        <input type="email" id="email" placeholder="Email (optional)" style="width:100%;padding:12px;margin-bottom:10px;border-radius:8px;border:1px solid #ccc;">
+        <textarea id="message" placeholder="Your feedback" required style="width:100%;padding:12px;margin-bottom:10px;border-radius:8px;border:1px solid #ccc;"></textarea>
+        <button type="submit" class="btn cta">Submit Feedback</button>
+      </form>
+    </div>
+  </div>
+</section>
+
+<script>
+  const form=document.getElementById('feedbackForm');form.addEventListener('submit',e=>{e.preventDefault();alert('Thank you for your feedback!');form.reset();});
+</script>
+
+</main>
+</body>
+</html>
