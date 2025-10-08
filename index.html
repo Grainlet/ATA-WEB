@@ -14,13 +14,20 @@
       --blue: #2b3f74;
       --orange: #f57722;
       --white: #ffffff;
+
       --max-width: 1400px;
       --easing: cubic-bezier(.2,.9,.3,1);
     }
-    .logo-img { height: 50px; width: auto; object-fit: contain; border-radius: 8px; }
+.logo-img {
+  height: 50px;
+  width: auto;
+  object-fit: contain;
+  border-radius: 8px;
+}
 
-    *{box-sizing:border-box;}
-    html,body{height:100%;}
+    /* Reset and base */
+    *{box-sizing:border-box}
+    html,body{height:100%}
     body{
       margin:0;
       font-family:Inter, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
@@ -29,18 +36,28 @@
       -webkit-font-smoothing:antialiased;
       -moz-osx-font-smoothing:grayscale;
     }
+
     a{color:inherit;text-decoration:none}
 
+    /* Top progress bar */
     #prog{position:fixed;left:0;top:0;height:4px;background:var(--orange);width:0;z-index:9999}
+
+    /* Custom tiny cursor (for demo; TV can hide cursor) */
     .cursor{position:fixed;z-index:99999;pointer-events:none;width:10px;height:10px;border-radius:50%;transform:translate(-50%,-50%);background:var(--orange);mix-blend-mode:normal}
 
+    /* Navbar */
     header{
       position:fixed;left:0;right:0;top:0;z-index:1000;backdrop-filter:blur(4px);
-      background:linear-gradient(180deg, rgba(43,63,116,0.22), rgba(43,63,116,0.06));
+      /* changed to a light-blue translucent tint */
+      background:linear-gradient(180deg, rgba(100,160,255,0.14), rgba(100,160,255,0.06));
       border-bottom:1px solid rgba(255,255,255,0.03);
-      transition: background 0.5s var(--easing);
+      transition: background 0.5s var(--easing); /* smooth fade */
     }
-    header.scrolled{ background: rgba(43,63,116,0.85); }
+    header.scrolled{
+      /* stronger light-blue on scroll */
+      background: rgba(11, 56, 110, 0.92);
+      color: #013c66;
+    }
     .nav-wrap{max-width:var(--max-width);margin:0 auto;display:flex;align-items:center;justify-content:space-between;padding:18px}
     .brand{display:flex;align-items:center;gap:14px}
     .brand .logo{width:48px;height:48px;border-radius:10px;background:linear-gradient(135deg,var(--blue),#1f2d51);display:flex;align-items:center;justify-content:center;font-weight:800;color:var(--white);font-family:Poppins}
@@ -50,38 +67,110 @@
     nav li a:hover{background:rgba(245,119,34,0.08);box-shadow:0 6px 18px rgba(43,63,116,0.12)}
     .cta{background:var(--orange);color:var(--white);padding:10px 16px;border-radius:10px;font-weight:700}
 
+    /* Hero */
     .hero{min-height:92vh;display:flex;align-items:center;padding:120px 24px 60px;background:linear-gradient(180deg,var(--blue),#24355c);}
     .container{max-width:var(--max-width);margin:0 auto;width:100%}
+
     .hero-grid{display:grid;grid-template-columns:1fr 520px;gap:40px;align-items:center}
     .hero h1{font-family:Poppins;font-weight:800;font-size:56px;line-height:1.02;margin:0;color:var(--white);letter-spacing:-0.02em}
     .hero p{margin-top:14px;font-size:18px;color:rgba(255,255,255,0.92);max-width:60%}
     .hero .actions{margin-top:22px;display:flex;gap:14px}
     .btn{display:inline-flex;align-items:center;gap:10px;padding:12px 18px;border-radius:10px;font-weight:700}
     .btn.secondary{border:2px solid rgba(255,255,255,0.08);background:transparent;color:var(--white)}
+
     .hero-card{background:linear-gradient(180deg, rgba(255,255,255,0.04), rgba(255,255,255,0.02));padding:18px;border-radius:14px;box-shadow:0 10px 40px rgba(11,23,55,0.4);}
     .hero-card img{width:100%;height:320px;object-fit:cover;border-radius:10px}
 
+
+    /* Section styles */
     section{padding:72px 24px}
     .section-head{display:flex;align-items:center;justify-content:space-between;gap:20px;margin-bottom:22px}
     .section-title{font-family:Poppins;font-size:28px;color:var(--blue);}
     .section-sub{color:rgba(0,0,0,0.55);font-weight:600}
 
     .card-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:20px}
+
+    /* Gallery */
+    .gallery{background:var(--white);color:var(--blue);padding:36px;border-top:6px solid var(--orange)}
+    .gallery-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:10px}
+    .gallery-grid img{width:100%;height:160px;object-fit:cover;border-radius:8px;cursor:pointer;transition:transform .35s var(--easing)}
+    .gallery-grid img:hover{transform:scale(1.03)}
+
+    /* Infrastructure */
+    .infra{display:flex;gap:28px;align-items:center}
+    .infra img{width:100%;height:320px;object-fit:cover;border-radius:12px}
+
+    /* Faculties */
+    .fac-row{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:18px}
+    .faculty{background:var(--blue);padding:18px;border-radius:12px;display:flex;gap:12px;align-items:center}
+    .teacher-pic{width:70px;height:70px;border-radius:50%;background:var(--white);display:flex;align-items:center;justify-content:center;font-weight:700;color:var(--blue);font-family:Poppins}
+    .teacher-info h4{margin:0;color:var(--white);font-weight:700}
+    .teacher-info p{margin:2px 0 0;color:rgba(255,255,255,0.9);font-size:14px}
+
+    /* Celebrations carousel */
+    .carousel{position:relative;overflow:hidden;border-radius:12px}
+    .carousel-track{display:flex;transition:transform .6s var(--easing)}
+    .carousel-slide{min-width:100%;padding:14px}
+    .carousel-slide img{width:100%;height:420px;object-fit:cover;border-radius:10px}
+
+    .carousel-nav{position:absolute;right:18px;bottom:18px;display:flex;gap:8px}
+    .small-dot{width:10px;height:10px;border-radius:50%;background:rgba(255,255,255,0.5)}
+    .small-dot.active{background:var(--orange)}
+
+    /* Labs tabs */
+    .tabs{display:flex;gap:8px;margin-bottom:16px}
+    .tab{padding:10px 14px;border-radius:10px;background:rgba(43,63,116,0.06);color:var(--blue);font-weight:700;cursor:pointer}
+    .tab.active{background:var(--orange);color:var(--white)}
+
+    /* Sports */
+    .sport-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:14px}
+    .sport{background:var(--white);color:var(--blue);padding:16px;border-radius:12px;box-shadow:0 8px 24px rgba(43,63,116,0.08)}
+
+    /* Feedback */
+    .feedback{background:var(--blue);padding:28px;border-radius:12px;color:var(--white)}
+    .feedback form{display:grid;gap:12px}
+    .feedback input,.feedback textarea{padding:12px;border-radius:8px;border:0;font-size:15px}
+    .feedback input{background:rgba(255,255,255,0.08);color:var(--white)}
+    .feedback textarea{min-height:120px;background:rgba(255,255,255,0.05);color:var(--white)}
+
+    /* Fade slideshow helper */
+    .fade-img { width:100%; height:100%; display:block; object-fit:cover; border-radius:12px; transition: opacity 0.6s ease-in-out; opacity:1; }
+    .fade-wrapper { width:100%; height:500px; max-width:900px; overflow:hidden; display:block; }
+
+    /* Section left-right container */
+    .lr { display:flex; gap:28px; align-items:center; justify-content:center; flex-wrap:wrap; }
+    .lr .lr-left { flex:1; min-width:300px; }
+    .lr .lr-right { flex:1; min-width:300px; background:var(--white); color:var(--blue); padding:22px; border-radius:12px; }
+
+    /* Responsive */
+    @media (max-width:1000px){
+      .hero-grid{grid-template-columns:1fr}
+      .gallery-grid{grid-template-columns:repeat(2,1fr)}
+      .hero h1{font-size:40px}
+      .hero p{max-width:100%}
+    }
+    @media (max-width:600px){
+      nav ul{display:none}
+      .brand{gap:10px}
+      .gallery-grid img{height:120px}
+    }
+
+    /* luxury tiny details */
     .glow{box-shadow:0 8px 30px rgba(37,55,98,0.28);border:1px solid rgba(255,255,255,0.03)}
+
   </style>
 </head>
 <body>
   <div id="prog"></div>
   <div class="cursor" id="cursor"></div>
 
-  <!-- Navbar -->
   <header>
     <div class="nav-wrap container">
-      <div class="brand">
-        <div class="logo">
-          <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTqJ37y_VZKQynOIsvZjyqBdRqSqOWPfUclLg&s" alt="Logo" class="logo-img">
-        </div>
-        <div>
+  <div class="brand">
+    <div class="logo">
+      <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTqJ37y_VZKQynOIsvZjyqBdRqSqOWPfUclLg&s" alt="Logo" class="logo-img">
+    </div>
+    <div>
           <div style="font-weight:800;font-family:Poppins;color:var(--white);font-size:18px">Adwaith Thought Academy</div>
           <div style="font-size:12px;color:rgba(255,255,255,0.78);margin-top:2px">Think • Act • Impact</div>
         </div>
@@ -112,6 +201,8 @@
             <a class="btn cta" href="#gallery">Explore Gallery</a>
             <a class="btn secondary" href="#infrastructure">Our Infrastructure</a>
           </div>
+
+          
         </div>
 
         <div class="hero-card glow">
@@ -119,49 +210,168 @@
         </div>
       </div>
     </section>
-
-  <!-- Infrastructure -->
-  <section id="infrastructure">
-    <div class="container">
-      <div class="section-head">
-        <div>
-          <div class="section-title">Infrastructure</div>
-          <div class="section-sub">Thoughtfully designed spaces to inspire learning</div>
-        </div>
-      </div>
-
-      <div style="display:flex;gap:28px;flex-wrap:wrap;justify-content:center;align-items:center">
-        <div style="flex:1;min-width:300px;">
-          <img id="infra-img" src="https://nithyaprakash1.github.io/ATA.github.io/asset/infra/Infra9.png" style="width:100%;height:500px;object-fit:cover;border-radius:12px;">
-        </div>
-        <div style="flex:1;min-width:300px;color:var(--blue);background:var(--white);padding:22px;border-radius:12px">
-          <h3 style="margin-top:0;color:var(--blue)">Modern Campus Facilities</h3>
-          <ul style="color:rgba(0,0,0,0.7);font-weight:600">
-            <li>State-of-the-art auditorium</li>
-            <li>Comprehensive library & resource center</li>
-            <li>Dedicated arts & STEM wings</li>
-            <li>Secure campus with smart access</li>
-          </ul>
-          <div style="margin-top:18px;font-weight:700;color:var(--blue)">Designed for safety, accessibility, and performance.</div>
-        </div>
+  <!-- Gallery / Campus -->
+<section id="gallery" class="gallery">
+  <div class="container">
+    <div class="section-head">
+      <div>
+        <div class="section-title">Campus</div>
+        <div class="section-sub">About Our Campus Life!</div>
       </div>
     </div>
-  </section>
+
+    <div class="gallery-grid">
+      <!-- Campus cards: each has multiple images -->
+      <div class="campus-card" data-images='["assets/campus-den1.jpg","assets/campus-den2.jpg"]'>
+        <img src="https://www.adwaithacademy.edu.in/images/campus/campus-life.webp" alt="The Den" class="imgh">
+        <div class="title1">The Den</div>
+      </div>
+
+      <div class="campus-card" data-images='["assets/campus-theatre1.jpg","assets/campus-theatre2.jpg"]'>
+        <img src="https://www.adwaithacademy.edu.in/images/campus/cam-page/theater.jpg" alt="The Theatre" class="imgh">
+        <div class="title1">The Theatre</div>
+      </div>
+
+      <div class="campus-card" data-images='["assets/campus-sports1.jpg","assets/campus-sports2.jpg"]'>
+        <img src="https://www.adwaithacademy.edu.in/images/campus/cam-page/sports.jpg" alt="Sports" class="imgh">
+        <div class="title1">Sports</div>
+      </div>
+
+      <div class="campus-card" data-images='["assets/campus-lab1.jpg","assets/campus-lab2.jpg"]'>
+        <img src="https://www.adwaithacademy.edu.in/images/campus/cam-page/labo.jpg" alt="Laboratory" class="imgh">
+        <div class="title1">The Labo</div>
+      </div>
+
+      <div class="campus-card" data-images='["assets/campus-byte1.jpg","assets/campus-byte2.jpg"]'>
+        <img src="https://www.adwaithacademy.edu.in/images/campus/cam-page/byte.jpg" alt="The Byte" class="imgh">
+        <div class="title1">The Byte</div>
+      </div>
+
+      <div class="campus-card" data-images='["assets/campus-library1.jpg","assets/campus-library2.jpg"]'>
+        <img src="https://www.adwaithacademy.edu.in/images/campus/cam-page/library.jpg" alt="The Book Worm" class="imgh">
+        <div class="title1">The Book Worm</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Campus Lightbox -->
+<div id="campusLightbox" style="position:fixed;inset:0;background:rgba(0,0,0,0.9);display:none;align-items:center;justify-content:center;z-index:2000;flex-direction:column;">
+  <img id="campusLightboxImg" src="" alt="" style="max-width:92%;max-height:80%;border-radius:8px;margin-bottom:12px">
+  <div style="display:flex;gap:16px;">
+    <button id="prevImg" style="padding:10px 16px;border-radius:8px;background:var(--orange);color:white;font-weight:700;">Prev</button>
+    <button id="nextImg" style="padding:10px 16px;border-radius:8px;background:var(--orange);color:white;font-weight:700;">Next</button>
+    <button id="closeCampusLightbox" style="padding:10px 16px;border-radius:8px;background:#444;color:white;font-weight:700;">Close</button>
+  </div>
+</div>
 
 <script>
-  // Infrastructure slideshow
-  const images = [
+  const campusCards = document.querySelectorAll('.campus-card');
+  const campusLightbox = document.getElementById('campusLightbox');
+  const campusImg = document.getElementById('campusLightboxImg');
+  const prevBtn = document.getElementById('prevImg');
+  const nextBtn = document.getElementById('nextImg');
+  const closeBtn = document.getElementById('closeCampusLightbox');
+
+  let currentImages = [];
+  let currentIndex = 0;
+
+  campusCards.forEach(card => {
+    card.addEventListener('click', () => {
+      currentImages = JSON.parse(card.dataset.images);
+      currentIndex = 0;
+      campusImg.src = currentImages[currentIndex];
+      campusLightbox.style.display = 'flex';
+    });
+  });
+
+  prevBtn.addEventListener('click', () => {
+    currentIndex = (currentIndex - 1 + currentImages.length) % currentImages.length;
+    campusImg.src = currentImages[currentIndex];
+  });
+
+  nextBtn.addEventListener('click', () => {
+    currentIndex = (currentIndex + 1) % currentImages.length;
+    campusImg.src = currentImages[currentIndex];
+  });
+
+  closeBtn.addEventListener('click', () => {
+    campusLightbox.style.display = 'none';
+    campusImg.src = '';
+  });
+
+  document.addEventListener('keydown', e => {
+    if (!campusLightbox.style.display || campusLightbox.style.display === 'none') return;
+    if (e.key === 'Escape') campusLightbox.style.display = 'none';
+    if (e.key === 'ArrowLeft') prevBtn.click();
+    if (e.key === 'ArrowRight') nextBtn.click();
+  });
+</script>
+
+
+    <!-- Infrastructure -->
+    <section id="infrastructure">
+      <div class="container">
+        <div class="section-head">
+          <div>
+            <div class="section-title">Infrastructure</div>
+            <div class="section-sub">Thoughtfully designed spaces to inspire learning</div>
+          </div>
+        </div>
+
+       <div class="lr">
+  <div class="lr-left">
+    <div class="fade-wrapper">
+      <img id="infra-img" class="fade-img" src="https://nithyaprakash1.github.io/ATA.github.io/asset/infra/Infra9.png" alt="infrastructure image">
+    </div>
+  </div>
+
+  <div class="lr-right">
+    <h3 style="margin-top:0;color:var(--blue)">Modern Campus Facilities</h3>
+    <ul style="color:rgba(0,0,0,0.7);font-weight:600">
+      <li>State-of-the-art auditorium</li>
+      <li>Comprehensive library & resource center</li>
+      <li>Dedicated arts & STEM wings</li>
+      <li>Secure campus with smart access</li>
+    </ul>
+    <div style="margin-top:18px;font-weight:700;color:var(--blue)">Designed for safety, accessibility, and performance.</div>
+  </div>
+</div>
+
+</div>
+</section>
+
+<script>
+  // generic fade-cycle helper
+  function cycleImages(imgEl, images, interval = 3000) {
+    if (!imgEl || !images || images.length === 0) return;
+    let idx = 0;
+    imgEl.src = images[idx];
+    setInterval(() => {
+      // fade out
+      imgEl.style.opacity = 0;
+      setTimeout(() => {
+        idx = (idx + 1) % images.length;
+        imgEl.src = images[idx];
+        // fade in
+        imgEl.style.opacity = 1;
+      }, 600); // matches CSS transition
+    }, interval);
+  }
+
+  // Infrastructure images (already present)
+  const infraImages = [
     "https://nithyaprakash1.github.io/ATA.github.io/asset/infra/Infra4.png",
     "https://nithyaprakash1.github.io/ATA.github.io/asset/infra/Infra6.png",
     "https://nithyaprakash1.github.io/ATA.github.io/asset/infra/infra17.png",
-    "https://nithyaprakash1.github.io/ATA.github.io/asset/infra/infra13.png"
+    "https://nithyaprakash1.github.io/ATA.github.io/asset/infra/infra13.png",
+    "https://nithyaprakash1.github.io/ATA.github.io/asset/infra/Infra5.png",
+    "https://nithyaprakash1.github.io/ATA.github.io/asset/infra/Infra9.png"
   ];
-  let index = 0;
-  const imgElement = document.getElementById("infra-img");
-  setInterval(()=>{ index=(index+1)%images.length; imgElement.src=images[index]; },3000);
+  cycleImages(document.getElementById('infra-img'), infraImages, 3000);
 </script>
 
-<!-- Faculties -->
+    <!-- Faculties -->
 <section id="faculties">
   <div class="container">
     <div class="section-head">
@@ -171,11 +381,14 @@
       </div>
     </div>
 
-    <div style="display:flex;gap:28px;flex-wrap:wrap;justify-content:center;align-items:center">
-      <div style="flex:1;min-width:300px;">
-        <img id="faculty-img" src="" style="width:100%;height:500px;object-fit:cover;border-radius:12px;border:4px solid #ff9900;">
+    <div class="lr">
+      <div class="lr-left">
+        <div class="fade-wrapper">
+          <img id="faculty-img" class="fade-img" src="" alt="Faculty Image">
+        </div>
       </div>
-      <div style="flex:1;min-width:300px;color:var(--blue);background:var(--white);padding:22px;border-radius:12px">
+
+      <div class="lr-right">
         <h3 style="margin-top:0;color:var(--blue)">Guiding Minds, Shaping Futures</h3>
         <ul style="color:rgba(0,0,0,0.7);font-weight:600">
           <li>Passionate about nurturing young minds and fostering creativity.</li>
@@ -193,16 +406,19 @@
     "https://nithyaprakash1.github.io/ATA.github.io/asset/Faculties/f13.png",
     "https://nithyaprakash1.github.io/ATA.github.io/asset/Faculties/f1.png",
     "https://nithyaprakash1.github.io/ATA.github.io/asset/Faculties/f7.png",
-    "https://nithyaprakash1.github.io/ATA.github.io/asset/Faculties/f12.png"
+    "https://nithyaprakash1.github.io/ATA.github.io/asset/Faculties/f12.png",
+    "https://nithyaprakash1.github.io/ATA.github.io/asset/Faculties/f2.png"
   ];
-  let currentFaculty = 0;
-  const facultyImgEl = document.getElementById("faculty-img");
-  function showNextFaculty(){facultyImgEl.src=facultyImages[currentFaculty];currentFaculty=(currentFaculty+1)%facultyImages.length;}
-  showNextFaculty();
-  setInterval(showNextFaculty,3000);
+  cycleImages(document.getElementById('faculty-img'), facultyImages, 3000);
 </script>
 
-<!-- Celebrations Placeholder -->
+<style>
+  /* keep original faculty layout styles (safe to keep) - slightly reduced extreme sizes */
+  .fac-row { display:block; } /* not used for new layout but kept so original styles remain */
+  .teacher-pic img { max-width:100%; height:auto; object-fit:cover; border-radius:8px; border:4px solid #ff9900; }
+</style>
+
+<!-- Celebrations -->
 <section id="celebrations">
   <div class="container">
     <div class="section-head">
@@ -212,23 +428,26 @@
       </div>
     </div>
 
-    <div style="display:flex;gap:28px;flex-wrap:wrap;justify-content:center;align-items:center">
-      <div style="flex:1;min-width:300px;">
-        <img src="https://via.placeholder.com/500x500" alt="Celebration Image" style="width:100%;height:500px;object-fit:cover;border-radius:12px;">
+    <div class="lr">
+      <div class="lr-left">
+        <div class="fade-wrapper">
+          <img id="celebration-img" class="fade-img" src="https://nithyaprakash1.github.io/ATA.github.io/asset/Celebration/C1.png" alt="Celebration slideshow">
+        </div>
       </div>
-      <div style="flex:1;min-width:300px;color:var(--blue);background:var(--white);padding:22px;border-radius:12px">
-        <h3 style="margin-top:0;color:var(--blue)">Joyful Campus Celebrations</h3>
-        <ul style="color:rgba(0,0,0,0.7);font-weight:600">
-          <li>Festivals and cultural events.</li>
-          <li>Annual day celebrations with performances.</li>
-          <li>Competitions and award ceremonies.</li>
+
+      <div class="lr-right">
+        <h3 style="margin-top:0;">Festive Moments & Events</h3>
+        <ul>
+          <li>Festivals and cultural events</li>
+          <li>Annual day and performances</li>
+          <li>Competitions and award ceremonies</li>
         </ul>
       </div>
     </div>
   </div>
 </section>
 
-<!-- Labs Placeholder -->
+<!-- Labs & Classrooms -->
 <section id="labs">
   <div class="container">
     <div class="section-head">
@@ -238,72 +457,431 @@
       </div>
     </div>
 
-    <div style="display:flex;gap:28px;flex-wrap:wrap;justify-content:center;align-items:center">
-      <div style="flex:1;min-width:300px;">
-        <img src="https://via.placeholder.com/500x500" alt="Labs Image" style="width:100%;height:500px;object-fit:cover;border-radius:12px;">
+    <div class="lr">
+      <div class="lr-left">
+        <div class="fade-wrapper">
+          <img id="labs-img" class="fade-img" src="https://nithyaprakash1.github.io/ATA.github.io/asset/LAbs&Classrooms/C2A.png" alt="Labs slideshow">
+        </div>
       </div>
-      <div style="flex:1;min-width:300px;color:var(--blue);background:var(--white);padding:22px;border-radius:12px">
-        <h3 style="margin-top:0;color:var(--blue)">Innovative Learning Spaces</h3>
-        <ul style="color:rgba(0,0,0,0.7);font-weight:600">
-          <li>Computer labs with coding and robotics workstations.</li>
-          <li>Science labs with safety-first setups.</li>
-          <li>Art & design studios for creativity.</li>
+
+      <div class="lr-right">
+        <h3 style="margin-top:0;">Explore Our Labs</h3>
+        <ul>
+          <li>Computer Lab: High-performance desktops with coding & robotics workspaces.</li>
+          <li>Physics & Chemistry Lab: Safety-first labs equipped for experiments.</li>
+          <li>QWings: A practical class where students design, build, and code robots using STEM concepts.</li>
         </ul>
       </div>
-    </div>
-  </div>
-</section>
-
-<!-- Sports Placeholder -->
-<section id="sports">
-  <div class="container">
-    <div class="section-head">
-      <div>
-        <div class="section-title">Sports & Extra Curricular</div>
-        <div class="section-sub">Holistic growth through physical activity and clubs</div>
-      </div>
-    </div>
-
-    <div style="display:flex;gap:28px;flex-wrap:wrap;justify-content:center;align-items:center">
-      <div style="flex:1;min-width:300px;">
-        <img src="https://via.placeholder.com/500x500" alt="Sports Image" style="width:100%;height:500px;object-fit:cover;border-radius:12px;">
-      </div>
-      <div style="flex:1;min-width:300px;color:var(--blue);background:var(--white);padding:22px;border-radius:12px">
-        <h3 style="margin-top:0;color:var(--blue)">Building Team Spirit & Excellence</h3>
-        <ul style="color:rgba(0,0,0,0.7);font-weight:600">
-          <li>Football and basketball coaching.</li>
-          <li>Music & arts clubs for performance.</li>
-          <li>Robotics & STEM clubs for competitions.</li>
-        </ul>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- Feedback -->
-<section id="feedback">
-  <div class="container">
-    <div class="section-head">
-      <div>
-        <div class="section-title">Feedback</div>
-        <div class="section-sub">We value your thoughts — leave us a message</div>
-      </div>
-    </div>
-    <div style="color:var(--blue);background:var(--white);padding:22px;border-radius:12px">
-      <form id="feedbackForm">
-        <input type="text" id="name" placeholder="Your name" required style="width:100%;padding:12px;margin-bottom:10px;border-radius:8px;border:1px solid #ccc;">
-        <input type="email" id="email" placeholder="Email (optional)" style="width:100%;padding:12px;margin-bottom:10px;border-radius:8px;border:1px solid #ccc;">
-        <textarea id="message" placeholder="Your feedback" required style="width:100%;padding:12px;margin-bottom:10px;border-radius:8px;border:1px solid #ccc;"></textarea>
-        <button type="submit" class="btn cta">Submit Feedback</button>
-      </form>
     </div>
   </div>
 </section>
 
 <script>
-  const form=document.getElementById('feedbackForm');form.addEventListener('submit',e=>{e.preventDefault();alert('Thank you for your feedback!');form.reset();});
+/* Fade-slideshow helper */
+function cycleImages(imgElement, images, interval=3000){
+  if(!imgElement || !images || images.length===0) return;
+  let idx = 0;
+  imgElement.src = images[idx];
+  setInterval(()=>{
+    idx = (idx+1)%images.length;
+    imgElement.src = images[idx];
+  }, interval);
+}
+
+/* Celebrations slideshow images */
+const celebrationImages = [
+  "https://nithyaprakash1.github.io/ATA.github.io/asset/Celebration/C1.png",
+  "https://nithyaprakash1.github.io/ATA.github.io/asset/Celebration/C2.png",
+  "https://nithyaprakash1.github.io/ATA.github.io/asset/Celebration/C7.png",
+  "https://nithyaprakash1.github.io/ATA.github.io/asset/Celebration/C4.png"
+];
+cycleImages(document.getElementById('celebration-img'), celebrationImages, 3000);
+
+/* Labs slideshow images */
+const labImages = [
+  "https://nithyaprakash1.github.io/ATA.github.io/asset/LAbs&Classrooms/C2A.png",
+  "https://nithyaprakash1.github.io/ATA.github.io/asset/LAbs&Classrooms/L4.png",
+  "https://nithyaprakash1.github.io/ATA.github.io/asset/LAbs&Classrooms/L8C1.png",
+  "https://nithyaprakash1.github.io/ATA.github.io/asset/LAbs&Classrooms/L5.png",
+  "https://nithyaprakash1.github.io/ATA.github.io/asset/LAbs&Classrooms/L8H5.png"
+];
+cycleImages(document.getElementById('labs-img'), labImages, 3000);
 </script>
 
-</main>
+
+    <!-- Sports & Extra Curricular -->
+    <section id="sports">
+      <div class="container">
+        <div class="section-head">
+          <div>
+            <div class="section-title">Sports & Extra Curricular</div>
+            <div class="section-sub">Holistic growth through physical activity and clubs</div>
+          </div>
+        </div>
+
+        <div class="lr">
+          <div class="lr-left">
+            <div class="fade-wrapper">
+              <img id="sports-img" class="fade-img" src="https://via.placeholder.com/900x500?text=Sports+1" alt="Sports slideshow">
+            </div>
+          </div>
+
+          <div class="lr-right">
+            <div class="sport-grid">
+              <div class="sport">
+                <h4>Football</h4>
+                <p style="font-weight:600;color:rgba(0,0,0,0.7)">Inter-school team & coaching sessions</p>
+              </div>
+              <div class="sport">
+                <h4>Basketball</h4>
+                <p style="font-weight:600;color:rgba(0,0,0,0.7)">Indoor courts with high-quality flooring</p>
+              </div>
+              <div class="sport">
+                <h4>Music & Arts Club</h4>
+                <p style="font-weight:600;color:rgba(0,0,0,0.7)">Performing opportunities and workshops</p>
+              </div>
+              <div class="sport">
+                <h4>Robotics Club</h4>
+                <p style="font-weight:600;color:rgba(0,0,0,0.7)">Competitions, mentoring and projects</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+<script>
+  // Sports slideshow (fade)
+  const sportImages = [
+    "https://nithyaprakash1.github.io/ATA.github.io/asset/Sports&Extra/S0.png",
+    "https://nithyaprakash1.github.io/ATA.github.io/asset/Sports&Extra/S6.png",
+    "https://nithyaprakash1.github.io/ATA.github.io/asset/Sports&Extra/S14.png",
+    "https://nithyaprakash1.github.io/ATA.github.io/asset/Sports&Extra/S17.png",
+    "https://nithyaprakash1.github.io/ATA.github.io/asset/Sports&Extra/S21.png",
+    "https://nithyaprakash1.github.io/ATA.github.io/asset/Sports&Extra/S22.png",
+    "https://nithyaprakash1.github.io/ATA.github.io/asset/Sports&Extra/S15.png",
+    "https://nithyaprakash1.github.io/ATA.github.io/asset/Sports&Extra/S3.png",
+
+  ];
+  cycleImages(document.getElementById('sports-img'), sportImages, 3000);
+</script>
+
+    <!-- Expo Showcase -->
+<section id="expo">
+  <div class="container">
+    <div class="section-head">
+      <div>
+        <div class="section-title">Gallery Showcase</div>
+        <div class="section-sub">Explore our Gallery</div>
+      </div>
+    </div>
+
+    <div style="text-align:center;">
+      <button id="openExpo" class="btn cta" style="padding:14px 24px;font-size:18px;">View Gallery</button>
+    </div>
+  </div>
+</section>
+
+<!-- Fullscreen Lightbox Carousel -->
+<div id="expoLightbox" style="
+  position:fixed;top:0;left:0;width:100%;height:100%;
+  background:rgba(0,0,0,0.9);display:none;justify-content:center;align-items:center;
+  z-index:99999;overflow:hidden;transition:opacity 0.5s ease;">
+  
+  <img id="expoImage" src="" alt="Expo Image" style="
+    max-width:90%;max-height:90%;object-fit:contain;border-radius:10px;
+    box-shadow:0 0 30px rgba(0,0,0,0.4);opacity:0;transition:opacity 1s ease;">
+  
+  <button id="closeExpo" style="
+    position:absolute;top:30px;right:40px;background:rgba(255,255,255,0.15);
+    border:none;color:white;font-size:28px;padding:10px 16px;border-radius:8px;
+    cursor:pointer;">×</button>
+</div>
+
+<script>
+  const expoImages = [
+    "Infra1.png",
+    "Infra2.png",
+    "Infra3.png",
+    "Infra4.png",
+    "Infra5.png",
+    "Infra6.png",
+    "Infra7.png",
+    "Infra8.png",
+    "Infra9.png",
+    "Infra10.png",
+    "Infra11.png",
+    "Infra12.png",
+    "Infra13.png",
+    "Infra14.png",
+    "Infra15.png",
+    "Infra16.png",
+    "Infra17.png",
+    "C1.png",
+    "C1.png",
+    "C1.png",
+    "C2.png",
+    "C3.png",
+    "C4.png",
+    "C5.png",
+    "C6.png",
+    "C7.png",
+    "C8.png",
+    "C9.png",
+    "C10.png",
+    "C11.png",
+    "C12.png",
+    "C13.png",
+    "C14.png",
+    "C15.png",
+    "C16.png",
+    "C17.png",
+    "C18.png",
+    "C19.png",
+    "C20.png",
+    "c21.png",
+    "c22.png",
+    "c23.png",
+    "f1.png",
+    "f2.png",
+    "f3.png",
+    "f4.png",
+    "f5.png",
+    "f6.png",
+    "f7.png",
+    "f8.png",
+    "f9.png",
+    "f10.png",
+    "f11.png",
+    "f12.png",
+    "f13.png",
+    "f14.png",
+    "f15.png",
+    "S0.png",
+    "S1.png",
+    "S2.png",
+    "S3.png",
+    "S4.png",
+    "S5.png",
+    "S6.png",
+    "S8.png",
+    "S9.png",
+    "S10.png",
+    "S11.png",
+    "S12.png",
+    "S13.png",
+    "S14.png",
+    "S15.png",
+    "S16.png",
+    "S17.png",
+    "S18.png",
+    "S19.png",
+    "S20.png",
+    "S21.png",
+    "S22.png",
+    "L1.png",
+    "L2.png",
+    "L3.png",
+    "L4.png",
+    "L5.png",
+    "L6.png",
+    "L7.png",
+    "L8H5.png",
+    "L8C1.png",
+    "C1A.png",
+    "C2A.png",
+    "C2L.png",
+    "C3A.png",
+    "C3L.png",
+    "C4L.png",
+    "C5A.png",
+    "C5A.png",
+    "C9A.png",
+  ];
+
+  const openExpo = document.getElementById('openExpo');
+  const closeExpo = document.getElementById('closeExpo');
+  const expoLightbox = document.getElementById('expoLightbox');
+  const expoImage = document.getElementById('expoImage');
+  let expoIndex = 0;
+  let expoInterval;
+
+  function showExpoImage(index) {
+    expoImage.style.opacity = 0;
+    setTimeout(() => {
+      expoImage.src = expoImages[index];
+      expoImage.onload = () => expoImage.style.opacity = 1;
+    }, 300);
+  }
+
+  function startExpoSlideshow() {
+    showExpoImage(expoIndex);
+    expoInterval = setInterval(() => {
+      expoIndex = (expoIndex + 1) % expoImages.length;
+      showExpoImage(expoIndex);
+    }, 3000);
+  }
+
+  openExpo.addEventListener('click', () => {
+    expoLightbox.style.display = 'flex';
+    expoIndex = 0;
+    startExpoSlideshow();
+  });
+
+  closeExpo.addEventListener('click', () => {
+    expoLightbox.style.display = 'none';
+    clearInterval(expoInterval);
+  });
+</script>
+    <!-- Feedback -->
+    <section id="feedback">
+      <div class="container">
+        <div class="section-head">
+          <div>
+            <div class="section-title">Feedback</div>
+            <div class="section-sub">We value your thoughts — leave us a message</div>
+          </div>
+        </div>
+
+        <div class="feedback">
+          <form id="feedbackForm">
+            <input type="text" id="name" placeholder="Your name" required>
+            <input type="email" id="email" placeholder="Email (optional)">
+            <textarea id="message" placeholder="Your feedback or message" required></textarea>
+            <div style="display:flex;gap:12px;align-items:center">
+              <button type="submit" class="btn cta">Send Feedback</button>
+              <div id="feedbackStatus" style="font-weight:700;margin-left:8px"></div>
+            </div>
+          </form>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+      <div class="footer-inner">
+        <div>
+          <div style="font-weight:800;font-family:Poppins">Adwaith Thought Academy</div>
+          <div style="font-size:13px;color:rgba(255,255,255,0.9);margin-top:6px">Address line • Phone • Email</div>
+        </div>
+        <div style="text-align:right">
+          <div style="font-weight:700">© <span id="year"></span>Adwaith Thought Academy</div>
+          <div style="font-size:13px;color:rgba(255,255,255,0.8);margin-top:6px">Privacy • Terms</div>
+        </div>
+      </div>
+    </footer>
+
+  </main>
+
+  <!-- Lightbox for gallery -->
+  <div id="lightbox" style="position:fixed;inset:0;background:rgba(0,0,0,0.85);display:none;align-items:center;justify-content:center;z-index:2000">
+    <img id="lightboxImg" src="" alt="" style="max-width:92%;max-height:86%;box-shadow:0 20px 60px rgba(0,0,0,0.6);border-radius:8px">
+  </div>
+
+  <script>
+    // small helpers
+    const qs = (s)=>document.querySelector(s);
+    const qsa = (s)=>document.querySelectorAll(s);
+
+    // update year
+    document.getElementById('year').innerText = new Date().getFullYear();
+
+    // scroll progress bar
+    window.addEventListener('scroll',()=>{
+      const h = document.documentElement.scrollHeight - window.innerHeight;
+      const pct = (window.scrollY/h)*100;
+      document.getElementById('prog').style.width = pct + '%';
+    },{passive:true});
+
+    // custom cursor (hide on touch)
+    const cursor = qs('#cursor');
+    if(window.matchMedia('(pointer:fine)').matches){
+      window.addEventListener('mousemove',e=>{cursor.style.left=e.clientX+'px';cursor.style.top=e.clientY+'px'} )
+    } else { cursor.style.display='none' }
+
+    // Smooth in-page nav
+    document.querySelectorAll('a[href^="#"]').forEach(a=>{
+      a.addEventListener('click',(e)=>{
+        e.preventDefault();
+        const id = a.getAttribute('href');
+        if(id==='#') return;
+        const el = document.querySelector(id);
+        if(!el) return;
+        el.scrollIntoView({behavior:'smooth',block:'start'});
+      })
+    });
+
+    // Gallery lightbox
+    qsa('.gallery-grid img').forEach(img=>{
+      img.addEventListener('click',()=>{
+        const full = img.dataset.full || img.src;
+        const lb = qs('#lightbox');
+        qs('#lightboxImg').src = full;
+        lb.style.display='flex';
+      })
+    });
+    qs('#lightbox').addEventListener('click',()=>{qs('#lightbox').style.display='none';qs('#lightboxImg').src=''});
+
+    // Carousel (kept and fixed)
+    (function(){
+      const track = qs('#carouselTrack');
+      const nav = qs('#carouselNav');
+      if (!track || !nav) return;
+      const slides = track.children.length;
+      let idx=0;
+
+      nav.innerHTML = '';
+      for(let i=0;i<slides;i++){const d=document.createElement('div');d.className='small-dot';nav.appendChild(d)}
+      const dots = nav.children;
+
+      function update(){
+        track.style.transform = `translateX(-${idx*100}%)`;
+        for(let i=0;i<dots.length;i++){dots[i].classList.toggle('active', i===idx)}
+      }
+      update();
+      setInterval(()=>{idx=(idx+1)%slides;update()},3500);
+    })();
+
+    // Tabs
+    qsa('.tab').forEach(t=>{
+      t.addEventListener('click',()=>{
+        qsa('.tab').forEach(x=>x.classList.remove('active'));
+        t.classList.add('active');
+        // for demo, we won't swap content drastically; could swap innerHTML or fetch images per tab
+      })
+    });
+
+    // Feedback form — stores into localStorage and shows thank you
+    qs('#feedbackForm').addEventListener('submit',e=>{
+      e.preventDefault();
+      const name = qs('#name').value.trim();
+      const email = qs('#email').value.trim();
+      const msg = qs('#message').value.trim();
+      if(!name||!msg){qs('#feedbackStatus').innerText='Please fill required fields';return}
+      const store = JSON.parse(localStorage.getItem('school_feedback')||'[]');
+      store.push({name,email,msg,ts:new Date().toISOString()});
+      localStorage.setItem('school_feedback',JSON.stringify(store));
+      qs('#feedbackStatus').innerText='Thanks! Submitted.';
+      qs('#feedbackForm').reset();
+    });
+
+    // Accessibility: allow escape to close lightbox
+    document.addEventListener('keydown',e=>{if(e.key==='Escape')qs('#lightbox').style.display='none'})
+
+    // ===== Navbar scroll effect =====
+    const header = qs('header');
+    const heroHeight = qs('.hero').offsetHeight;
+
+    window.addEventListener('scroll', () => {
+      if (window.scrollY > heroHeight - 80) {
+        header.classList.add('scrolled');
+      } else {
+        header.classList.remove('scrolled');
+      }
+    });
+  </script>
+
 </body>
 </html>
